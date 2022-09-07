@@ -1,8 +1,11 @@
 import { Platform, KeyboardAvoidingView, StyleSheet, Text, View, ImageBackground } from 'react-native';
 import SearchInput from './components/SearchInput';
 import getImageForWeather from './utils/getImageForWeather';
+import getCityNames from './utils/getCityNames';
 
 export default function App() {
+  const cities = getCityNames()
+  console.log(cities);
   return (
     // <KeyboardAvoidingView style={styles.container} behavior='height'>
     <View style={styles.container}>
