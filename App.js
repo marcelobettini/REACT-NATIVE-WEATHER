@@ -1,11 +1,8 @@
-import { Platform, KeyboardAvoidingView, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { Platform, StyleSheet, Text, View, ImageBackground } from 'react-native';
 import SearchInput from './components/SearchInput';
 import getImageForWeather from './utils/getImageForWeather';
-import getCityNames from './utils/getCityNames';
 
 export default function App() {
-  const cities = getCityNames()
-  console.log(cities);
   return (
     // <KeyboardAvoidingView style={styles.container} behavior='height'>
     <View style={styles.container}>
@@ -19,7 +16,7 @@ export default function App() {
           <Text style={[styles.largeText, styles.textStyle]} >San Francisco</Text>
           <Text style={[styles.smallText, styles.textStyle]}>Light Cloud</Text>
           <Text style={[styles.largeText, styles.textStyle]}>24º</Text>
-          <SearchInput placeholder='buscate algo chango' />
+          <SearchInput placeholder='Buscar ciudad...' />
         </ View>
       </ImageBackground>
 

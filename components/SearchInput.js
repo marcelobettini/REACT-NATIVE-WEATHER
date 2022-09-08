@@ -1,15 +1,45 @@
-import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, TextInput, View, Button, Modal, Text, FlatList } from "react-native";
+import getCityNames from '../utils/getCityNames';
 export default function SearchInput({ placeholder }) {
+  const cities = getCityNames()
+  const [show, setShow] = useState(false)
+  const renderItem = ({ item }) => (
+    <Text>{item} </Text>
+  );
   return (
-    <View style={styles.container}>
-      <TextInput
-        placeholder={placeholder}
-        placeholderTextColor='white'
-        clearButtonMode='while-editing'
-        style={styles.textInput}
+    <>
+      <Modal
+        animationType='fade'
+        transparent={true}
+        visible={show}
+        onRequestClose={() => {
+          setShow(!show);
+        }}>
+        <FlatList
+          data={cities}
+          renderItem={renderItem}
+          keyExtractor={item => item} />
+
+
+
+      </Modal>
+
+      <View style={styles.container}>
+        <TextInput
+          placeholder={placeholder}
+          placeholderTextColor='white'
+          clearButtonMode='while-editing' //iOS
+          style={styles.textInput}
+        />
+      </View>
+      <Button
+        onPress={() => setShow(!show)}
+        title="Full list"
+        color="#841584"
+        accessibilityLabel="Show list of cities"
       />
-    </View>
+    </>
   )
 }
 
